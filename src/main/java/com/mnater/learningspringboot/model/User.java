@@ -9,7 +9,8 @@ import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 public class User {
-	private final UUID uuid;
+	
+	private  UUID uuid;
 	@NotNull
 	private final String firstName;
 	@NotNull
@@ -43,6 +44,9 @@ public class User {
 		return uuid;
 	}
 	
+	public void setUuid(UUID userUuid) {
+		this.uuid = userUuid;
+	}
 	public String getFirstName() {
 		return firstName;
 	}

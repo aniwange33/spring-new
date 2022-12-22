@@ -1,7 +1,6 @@
 package com.mnater.learningspringboot.clientproxy;
 
 import com.mnater.learningspringboot.model.User;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 import javax.ws.rs.*;

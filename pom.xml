@@ -15,6 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<swagger.version>1.6.2</swagger.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -47,6 +48,14 @@
 			<artifactId>resteasy-jackson2-provider</artifactId>
 			<version>3.1.4.Final</version>
 		</dependency>
+
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-jersey2-jaxrs</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+
+
 
 	</dependencies>
 

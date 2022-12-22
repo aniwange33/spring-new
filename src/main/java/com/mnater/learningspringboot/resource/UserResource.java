@@ -2,9 +2,12 @@ package com.mnater.learningspringboot.resource;
 
 import com.mnater.learningspringboot.model.User;
 import com.mnater.learningspringboot.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import java.util.List;
@@ -13,6 +16,7 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @Path("users")
 @Validated
+@Api(value = "User resource", produces = "application/json")
 public class UserResource {
 	private final UserService userService;
 	
@@ -23,6 +27,10 @@ public class UserResource {
 	
 	@GET
 	@Produces(APPLICATION_JSON)
+	@ApiOperation(value = "Get users resource. Version 1 - (version in URL)", response = User.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "users resource found")
+	})
 	public List<User> getUsers() {
 		return userService.getAllUsers();
 	}

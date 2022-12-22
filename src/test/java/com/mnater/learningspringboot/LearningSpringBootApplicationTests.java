@@ -5,7 +5,7 @@ import com.mnater.learningspringboot.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 
 import java.util.UUID;
@@ -26,6 +26,7 @@ class LearningSpringBootApplicationTests {
 	}
 	
 	@Test
+	@ExceptionHandler()
 	void  shouldCreateUser(){
 		//given
 		UUID userUuid = UUID.randomUUID();
