@@ -5,8 +5,8 @@ import com.mnater.learningspringboot.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.ws.rs.NotFoundException;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -24,31 +24,32 @@ public class UserService {
 	}
 	
 	
-	public Optional<User> getUser(UUID userUid) {
-	 return userDao.selectUser(userUid);
+	public User getUser(UUID userUid) {
+	 return getDatabaseUser(userUid);
 	}
 	
 	
-	public int removeUser(UUID userUid) {
-		Optional<User> user = userDao.selectUser(userUid);
-		if (user.isPresent()) {
-		   return userDao.deleteUser(userUid);
-		}
-		return -1;
-		
+	public void removeUser(UUID userUid) {
+			User databaseUser = getDatabaseUser(userUid);
+			userDao.deleteUser(databaseUser.getUuid());
 	}
 	
 	
-	public int updateUser(UUID userUid, User user) {
-		Optional<User> userOpt = userDao.selectUser(userUid);
-		if (userOpt.isPresent()) {
-			return userDao.updateUser(userUid, user);
-		}
-		return -1;
+	public void updateUser(User user) {
+		User databaseUser = getDatabaseUser(user.getUuid());
+		userDao.updateUser(databaseUser.getUuid(), user);
 	}
 	
-
-	public int createUser(User user) {
-		return userDao.insertUser(user);
+	private User getDatabaseUser(UUID userUid) {
+		return userDao.selectUser(userUid).orElseThrow(() -> new NotFoundException("user not found with id " + userUid));
+	}
+	
+	
+	public void createUser(User user) {
+	  userDao.insertUser(user);
+	}
+	
+	public void deleteUser(UUID userId) {
+		userDao.deleteUser(userId);
 	}
 }

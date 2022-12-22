@@ -2,14 +2,26 @@ package com.mnater.learningspringboot.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 public class User {
 	private final UUID uuid;
+	@NotNull
 	private final String firstName;
+	@NotNull
 	private final String lastName;
+	@NotNull
+	@Max(value = 112)
+	@Min(value = 0)
 	private final int age;
+	@NotNull
+	@Email
 	private final String email;
+	@NotNull
 	private final Gender gender;
 	
 	public User(

@@ -40,7 +40,7 @@ public class FakeUserDatabase  implements UserDao {
 	
 	@Override
 	public int insertUser(User user) {
-		 database.put(UUID.randomUUID(),user);
-		return 1;
+		 database.put(user.getUuid(), user);
+		 return 1;
 	}
 }
