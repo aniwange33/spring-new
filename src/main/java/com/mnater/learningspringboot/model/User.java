@@ -26,13 +26,12 @@ public class User {
 	private final Gender gender;
 	
 	public User(
-			@JsonProperty("uuid") UUID uuid,
 			@JsonProperty("firstName")String firstName,
 			@JsonProperty("lastName")String lastName,
 			@JsonProperty("age")int age,
 			@JsonProperty("email")String email,
 			@JsonProperty("gender")Gender gender) {
-		this.uuid = uuid;
+		this.uuid = UUID.randomUUID();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
@@ -44,9 +43,6 @@ public class User {
 		return uuid;
 	}
 	
-	public void setUuid(UUID userUuid) {
-		this.uuid = userUuid;
-	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -74,12 +70,12 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User[" +
+		return "{" + 
 				"uuid: " + uuid +
 				", firstName: '" + firstName + '\'' +
 				", lastName: '" + lastName + '\'' +
 				", age: " + age +
 				", email: '" + email + '\'' +
-				']';
+				"}";
 	}
 }

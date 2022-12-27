@@ -46,8 +46,8 @@ public class UserResource {
 	@POST
 	@Produces(APPLICATION_JSON)
 	@Consumes(APPLICATION_JSON)
-	public void createUser(@Valid User user) {
-	 userService.createUser(user);
+	public User createUser(@Valid User user) {
+	 return userService.createUser(user);
 	}
 	
 	@PUT

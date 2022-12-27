@@ -24,7 +24,7 @@ public interface UserResourceV1 {
 	@POST
 	@Produces(APPLICATION_JSON)
 	@Consumes(APPLICATION_JSON)
-	public void createUser(@Valid  User user) ;
+	public User createUser(@Valid  User user) ;
 	
 	@PUT
 	@Produces(APPLICATION_JSON)

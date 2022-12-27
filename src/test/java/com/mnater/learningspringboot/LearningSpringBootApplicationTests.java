@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 
-import java.util.UUID;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -29,13 +29,13 @@ class LearningSpringBootApplicationTests {
 	@ExceptionHandler()
 	void  shouldCreateUser(){
 		//given
-		UUID userUuid = UUID.randomUUID();
-		User user = new User(userUuid, "John", "Mark", 19, "john@gmail.com", User.Gender.Male);
+		User user = new User("John", "Mark", 19, "john@gmail.com", User.Gender.Male);
+		
 		//when
-		userResourceV1.createUser(user);
+		User user1 = userResourceV1.createUser(user);
+		
 		//then
-		User john = userResourceV1.getUser(userUuid);
-		assertThat(user).usingRecursiveComparison().isEqualTo(john);
+		assertThat(user1).usingRecursiveComparison().isEqualTo(user);
 	}
 
 }

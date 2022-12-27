@@ -1,0 +1,19 @@
+server:
+  port: 8181
+
+keycloak:
+  realm: amosApp
+  auth-server-url: http://localhost:8080
+  resource: amosAppClient
+  public-client: true
+  bearer-only: true
+
+users:
+  api:
+    url:
+      v1:  http://localhost:${server.port}/api/v1/users
+  
+spring:
+  mvc:
+    path match:
+      matching-strategy: ANT_PATH_MATCHER

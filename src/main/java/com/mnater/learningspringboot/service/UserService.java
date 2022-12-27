@@ -45,11 +45,9 @@ public class UserService {
 	}
 	
 	
-	public void createUser(User user) {
-		if(user.getUuid() == null) {
-			user.setUuid(UUID.randomUUID());
-		}
+	public User createUser(User user) {
 	   userDao.insertUser(user);
+		return user;
 	}
 	
 	public void deleteUser(UUID userId) {
